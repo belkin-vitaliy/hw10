@@ -20,13 +20,6 @@ public class RedBlackTree<K extends Comparable<K>> {
 
     private Node<K> root;
 
-    private org.example.TreePrinter<Node<K>> printer = new org.example.TreePrinter<>(Node::toString, Node::getLeft, Node::getRight);
-
-    {
-        printer.setSquareBranches(true);
-        printer.setHspace(1);
-        printer.setHspace(1);
-    }
 
     public boolean add(K key) {
 
@@ -376,11 +369,6 @@ public class RedBlackTree<K extends Comparable<K>> {
         result.add(curr.key);
         leftCurRight(curr.right, result);
     }
-
-    public void print() {
-        printer.printTree(root);
-    }
-
 
     @Getter
     @Setter
