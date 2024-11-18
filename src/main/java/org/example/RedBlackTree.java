@@ -200,10 +200,18 @@ public class RedBlackTree<K extends Comparable<K>> {
         }
         Node<K> sibling = getSibling(node);
 
+        if (sibling == null) {
+            return;
+        }
+
         // Case 2: Red sibling
         if (sibling.isRed) {
             handleRedSibling(node, sibling);
             sibling = getSibling(node);
+        }
+
+        if (sibling == null) {
+            return;
         }
 
         // Cases 3+4: Black sibling with two black children
@@ -274,6 +282,9 @@ public class RedBlackTree<K extends Comparable<K>> {
 
     private Node<K> getSibling(Node<K> node) {
         Node<K> parent = node.parent;
+        if (parent == null) {
+            return null;
+        }
         if (node == parent.left) {
             return parent.right;
         } else if (node == parent.right) {

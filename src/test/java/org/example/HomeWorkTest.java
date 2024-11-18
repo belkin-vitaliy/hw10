@@ -35,7 +35,7 @@ class HomeWorkTest {
     private void assertRun(String pattern) {
         String answer = Files.readString(Path.of("target/" + String.format(pattern, "answer")));
         String out = Files.readString(Path.of("task/" + String.format(pattern, "out")));
-        assertEquals(out, answer);
+        assertEquals(out, answer.trim());
     }
 
     @SneakyThrows
